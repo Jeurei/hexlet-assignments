@@ -5,7 +5,7 @@
 require 'forwardable'
 require 'uri'
 
-class Uri
+class Url
   extend Forwardable
 
   attr_reader :url, :uri
@@ -18,11 +18,11 @@ class Uri
   end
 
   def query_params
-    return nil unless uri.query
+    return {} unless uri.query
 
     uri.query.split('&').each_with_object({}) do |param, hash|
       key, value = param.split('=')
-      hash[key] = value
+      hash[key.to_sym] = value
     end
   end
 
@@ -34,9 +34,13 @@ class Uri
   end
 
   def ==(other)
-    return false unless other.is_a?(Uri)
+    return false unless other.is_a?(Url)
 
     scheme == other.scheme && host == other.host && port == other.port && query_params == other.query_params
+  end
+
+  def !=(other)
+    !(self == other)
   end
 end
 

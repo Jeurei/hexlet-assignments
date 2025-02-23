@@ -10,6 +10,18 @@ class Signature
   def call(env)
     status, headers, body = @app.call(env)
 
-    [status, headers, body.push("\n#{Digest::SHA256.hexdigest(body.join)}")]
+    return [status, headers, body] unless status == 200
+
+    body_content = body.to_a
+
+    signature = Digest::SHA256.hexdigest(body_content.join)
+
+    new_body = body_content + ["\n#{signature}"]
+
+    headers['Content-Length'] = new_body.join.bytesize.to_s if headers['Content-Length']
+
+    [status, headers, new_body]
+  ensure
+    body.close if body.respond_to?(:close)
   end
 end

@@ -1,0 +1,19 @@
+<div style="width:75%;margin: 0 auto;">
+  <h1>Tasks</h2>
+
+  <h3>
+    <%= link_to "Create new task", new_task_path %>
+  </h3>
+
+  <br/>
+
+
+  <% @tasks.each do |task| %>
+    <div style="display:flex;justify-content:space-between;">
+      <%= link_to task.name, task_path(task)%>
+      <%= link_to "Edit", edit_task_path(task)%>
+    </div>
+    <hr/>
+  <% end %>
+<div>
+

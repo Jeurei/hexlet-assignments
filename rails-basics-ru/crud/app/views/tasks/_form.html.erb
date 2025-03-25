@@ -1,0 +1,51 @@
+<%= form_with model: task, local: true do |form|%>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "ошибка") %>:</h2>
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name%>
+    <%= form.text_field :name%>
+  </div>
+
+  <hr/>
+
+
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <hr/>
+
+  <div>
+    <%= form.label :creator%>
+    <%= form.text_field :creator%>
+  </div>
+
+  <hr/>
+
+  <div>
+    <%= form.label :description%>
+    <%= form.text_area :description%>
+  </div>
+
+  <hr/>
+
+  <div>
+    <%= form.label :completed%>
+    <%= form.check_box :completed%>
+  </div>
+
+
+  <div>
+    <%= form.submit task.new_record? ? "Создать" : "Обновить" %>
+  </div>
+<% end %>

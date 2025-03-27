@@ -1,0 +1,31 @@
+= form_with model: task, local: true do |form|
+  - if task.errors.any?
+    #error_explanation
+      h2
+        = pluralize(task.errors.count, "ошибка")
+        | :
+      ul
+        - task.errors.full_messages.each do |message|
+          li
+            = message
+  div
+    = form.label :name
+    = form.text_field :name
+  hr
+  div
+    = form.label :status
+    = form.text_field :status
+  hr
+  div
+    = form.label :creator
+    = form.text_field :creator
+  hr
+  div
+    = form.label :description
+    = form.text_area :description
+  hr
+  div
+    = form.label :completed
+    = form.check_box :completed
+  div
+    = form.submit task.new_record? ? "Создать" : "Обновить"

@@ -1,13 +1,14 @@
+require:
+  - rubocop-slim
 AllCops:
   TargetRubyVersion: 3.1.2
   NewCops: enable
   Exclude:
-    - '**/vendor/**/*'
-    - '**/schema.rb'
-    - '**/db/migrate/**'
-    - '**/examples/**/*'
-    - '**/bin/*'
-
+    - "**/vendor/**/*"
+    - "**/schema.rb"
+    - "**/db/migrate/**"
+    - "**/examples/**/*"
+    - "**/bin/*"
 
 Style/Documentation:
   Enabled: false

@@ -5,6 +5,6 @@ h1 Editing post comment
 br
 
 div.d-flex.align-items-center.gap-2
-  = button_to "Delete", comment_path(@post_comment), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "btn btn-link p-0"
+  = button_to 'Delete', comment_path(@post_comment), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'btn btn-link p-0'
   '|
-  =< link_to "Back to post comments", post_path(@post_comment.post)
+  =< link_to 'Back to post comments', post_path(@post_comment.post)

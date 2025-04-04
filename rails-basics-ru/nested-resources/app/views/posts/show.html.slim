@@ -1,0 +1,18 @@
+- content_for :title do
+  = @post.title
+p
+  strong.me-2 Body:
+  = @post.body
+
+- if !@post_comments.nil?
+  ul.list-unstyled.d-flex.flex-column.gap-4
+    - @post_comments.each do |post_comment|
+      li
+        = render partial: 'post_comments/post_comment', locals: { post_comment: post_comment, post: @post }
+
+=  link_to "New comment", new_post_comment_path(@post)
+hr
+
+.d-flex
+  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary me-2'
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'

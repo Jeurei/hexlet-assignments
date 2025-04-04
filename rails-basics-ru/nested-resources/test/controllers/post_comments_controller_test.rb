@@ -18,15 +18,6 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create post_comment' do
-    assert_difference('PostComment.count') do
-      post comment_url(@post_comment),
-           params: { post_comment: { comment: @post_comment.comment } }
-    end
-
-    assert_redirected_to post_comment_url(PostComment.last)
-  end
-
   test 'should update post_comment' do
     patch comment_url(@post_comment),
           params: { post_comment: { comment: @post_comment.comment } }

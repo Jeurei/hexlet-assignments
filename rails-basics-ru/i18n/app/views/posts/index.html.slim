@@ -1,0 +1,31 @@
+- content_for :title do
+  / page title (h1)
+  =t(".title")
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope = 'col' } #
+      th{ scope = 'col' }
+        / table title
+        = Post.human_attribute_name(:title)
+      th{ scope = 'col' }
+        = Post.human_attribute_name(:body)
+      th
+        = Post::Comment.model_name.human(count: 2)
+      th
+        =t(".link")
+
+  tbody
+    - @posts.each_with_index do |post, i|
+      tr
+        th{ scope = 'row' } = i + 1
+        td = post.title
+        td = post.body
+        td
+          = t(".comments_count", count: post.comments.count)
+        td.d-flex
+          =link_to t('.edit'), post_path(post), class: 'btn btn-outline-primary me-2'
+
+= link_to new_post_path, id: 'new-post-link', class: 'btn btn-primary' do
+  =t(".create")

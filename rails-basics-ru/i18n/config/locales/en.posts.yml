@@ -1,0 +1,21 @@
+en:
+  destroy_confirmation: Are you sure?
+  posts:
+    index:
+      title: Posts
+      create: Create
+      edit: Edit
+      link: Link
+      comments_count:
+        one: "%{count} comment"
+        other: "%{count} comments"
+
+    new:
+      title: New Post
+    comments:
+      edit:
+        title: Editing comment
+      create:
+        success: Comment was created.
+      update:
+        success: Comment was updated.

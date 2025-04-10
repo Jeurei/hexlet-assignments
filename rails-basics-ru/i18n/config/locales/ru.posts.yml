@@ -1,0 +1,22 @@
+---
+ru:
+  destroy_confirmation: Уверены?
+  posts:
+    index:
+      title: Посты
+      create: Создать
+      edit: Изменить
+      link: Ссылка
+      comments_count:
+        one: "%{count} комментарий"
+        few: "%{count} комментария"
+        many: "%{count} комментариев"
+    new:
+      title: Новый пост
+    comments:
+      edit:
+        title: Изменить комментарий
+      create:
+        success: Комментарий создан.
+      update:
+        success: Комментарий обновлен.
